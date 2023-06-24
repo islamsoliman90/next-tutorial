@@ -1,9 +1,9 @@
-import "./globals.css";
+import './globals.css'
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -13,9 +13,11 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <nav>my nav</nav>
+        <nav>
+          <h1>My Navbar</h1>
+        </nav>
         {children}
       </body>
     </html>
-  );
+  )
 }
