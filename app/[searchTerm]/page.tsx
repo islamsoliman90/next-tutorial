@@ -10,7 +10,7 @@ type Props = {
 export async function generateMetadata({ params: { searchTerm } }: Props) {
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
   const data = await wikiData;
-  const displayTerm = searchTerm;
+  const displayTerm = searchTerm.replaceAll("%20", " ");
 
   if (!data?.query?.pages) {
     return {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params: { searchTerm } }: Props) {
 export default async function SearchResults({ params: { searchTerm } }: Props) {
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
   const data = await wikiData;
-  const results: Result[] | undefined = data;
+  const results: Result[] | undefined = data?.query?.pages;
   console.log(results);
   const content = (
     <main className="bg-slate-200 mx-auto max-w-lg py-1 min-h-screen">
